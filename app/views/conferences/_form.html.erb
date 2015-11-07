@@ -18,6 +18,7 @@
   <div class="field">
     <%= f.label :dateandtime, "Date and Time" %><br>
     <%= f.datetime_select :dateandtime %>
+    <%= f.time_zone_select :dateandtime, ActiveSupport::TimeZone.us_zones %>
   </div>
   <div class="field">
     <%= f.label :description %><br>
