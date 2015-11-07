@@ -2,3 +2,7 @@ deploy:
   provider: heroku
   api_key:
     secure: "ZqEvhFlt8elunUHAMMRTUiF0olj5pulvmjISycibxWD/1L3OX83/kb3DNyvkClYna72u6e2WJpwbeQ9NlAeB0zwzFU4HwiakPUnz7cAibE20MBBnDtWSpvlwZtlKwuK48Nc7YBRQI72isnCtYNgCQMWAY6FyCiqtBtkBKLBEXKpODY77d3lrzCbW/m68acIl55ZJJIU+9eYZFy61m2aDB/sMcJ/eRDtD8IQudXN+2jeqOn04eNgRQ1O6UmkdBYrW7GIndgQ5JYwYqfiowkW7oSbASFkdcNh8iXTpfQ4UqaNe1gdvNKUUgfJ666bTQck+Y2YsVTSgjVbkIKli4Yo1XQjUvegFygnjQ++UqzZNKcDq0AUmdAX63lZxzXUYG4gVIUvMZTND6GoGhyyz+FLLoZBUB555lrxgDfYaLKXE6niCWaD7kevSHygpNXonCVe0Sbl06NclnP0NAdLuc5QsGLDVJs+4UpqIU1SmM4u1P+Sf5BCRfBZKzm5qqzQJk1Lmxm67Gm1xkA03wLgh8oJxwimuRDpO2x9uRGQ/+lAfBasTqhpxFG5jjocPoNySNq+gNOKW2l7syybnVNpRHkHtgQJrFT+gXQ0LCQGMXNxvkfli4gHeUkX663D5x50rbynVkW6TXT0WRVQgxIp7gYjXqYGtQOC6IF8n6j7fl7WI8q8="
+  app: 'r15-team-130'
+  run:
+    - "rake db:migrate"
+    - "rake cleanup"
