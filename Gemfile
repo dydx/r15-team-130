@@ -32,6 +32,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 #Geocoder gem
 gem 'geocoder'
+# Bootstrap!!
+gem 'bootstrap-sass'
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
