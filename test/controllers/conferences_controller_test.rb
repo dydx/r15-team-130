@@ -18,7 +18,7 @@ class ConferencesControllerTest < ActionController::TestCase
 
   test "should create conference" do
     assert_difference('Conference.count') do
-      post :create, conference: { address: @conference.address, date: @conference.date, description: @conference.description, latitude: @conference.latitude, longitude: @conference.longitude, name: @conference.name, time: @conference.time }
+      post :create, conference: { address: @conference.address, dateandtime: @conference.dateandtime, description: @conference.description, latitude: @conference.latitude, longitude: @conference.longitude, name: @conference.name }
     end
 
     assert_redirected_to conference_path(assigns(:conference))
@@ -35,7 +35,7 @@ class ConferencesControllerTest < ActionController::TestCase
   end
 
   test "should update conference" do
-    patch :update, id: @conference, conference: { address: @conference.address, date: @conference.date, description: @conference.description, latitude: @conference.latitude, longitude: @conference.longitude, name: @conference.name, time: @conference.time }
+    patch :update, id: @conference, conference: { address: @conference.address, dateandtime: @conference.dateandtime, description: @conference.description, latitude: @conference.latitude, longitude: @conference.longitude, name: @conference.name }
     assert_redirected_to conference_path(assigns(:conference))
   end
 

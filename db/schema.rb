@@ -11,12 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151107044028) do
+ActiveRecord::Schema.define(version: 20151107045507) do
 
   create_table "conferences", force: :cascade do |t|
     t.string   "name"
-    t.date     "date"
-    t.time     "time"
+    t.datetime "dateandtime"
     t.text     "description"
     t.string   "address"
     t.float    "longitude"

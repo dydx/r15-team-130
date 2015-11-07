@@ -16,12 +16,8 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :date %><br>
-    <%= f.date_select :date %>
-  </div>
-  <div class="field">
-    <%= f.label :time %><br>
-    <%= f.time_select :time %>
+    <%= f.label :dateandtime %><br>
+    <%= f.datetime_select :dateandtime %>
   </div>
   <div class="field">
     <%= f.label :description %><br>
@@ -30,6 +26,14 @@
   <div class="field">
     <%= f.label :address %><br>
     <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :longitude %><br>
+    <%= f.text_field :longitude %>
+  </div>
+  <div class="field">
+    <%= f.label :latitude %><br>
+    <%= f.text_field :latitude %>
   </div>
   <div class="actions">
     <%= f.submit %>

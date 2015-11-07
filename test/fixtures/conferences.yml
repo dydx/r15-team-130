@@ -2,8 +2,7 @@
 
 one:
   name: MyString
-  date: 2015-11-06
-  time: 2015-11-06 23:40:28
+  dateandtime: 2015-11-06 23:55:07
   description: MyText
   address: MyString
   longitude: 1.5
@@ -11,8 +10,7 @@ one:
 
 two:
   name: MyString
-  date: 2015-11-06
-  time: 2015-11-06 23:40:28
+  dateandtime: 2015-11-06 23:55:07
   description: MyText
   address: MyString
   longitude: 1.5
