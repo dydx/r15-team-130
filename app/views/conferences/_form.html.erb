@@ -16,7 +16,7 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :dateandtime %><br>
+    <%= f.label :dateandtime, "Date and Time" %><br>
     <%= f.datetime_select :dateandtime %>
   </div>
   <div class="field">
@@ -27,14 +27,7 @@
     <%= f.label :address %><br>
     <%= f.text_field :address %>
   </div>
-  <div class="field">
-    <%= f.label :longitude %><br>
-    <%= f.text_field :longitude %>
-  </div>
-  <div class="field">
-    <%= f.label :latitude %><br>
-    <%= f.text_field :latitude %>
-  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
