@@ -14,7 +14,7 @@
   <tbody>
     <% @conferences.each do |conference| %>
       <tr>
-        <td><%= link_to conference.name, conference %></td>
+        <td><%= link_to conference.name, conference, 'data-no-turbolink' => true %></td>
         <td><%= conference.address %></td>
         <td><%= conference.dateandtime %></td>
       </tr>
