@@ -30,6 +30,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+#Geocoder gem
+gem 'geocoder'
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views

@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151107032610) do
+ActiveRecord::Schema.define(version: 20151107044028) do
 
   create_table "conferences", force: :cascade do |t|
     t.string   "name"
     t.date     "date"
     t.time     "time"
     t.text     "description"
+    t.string   "address"
     t.float    "longitude"
     t.float    "latitude"
     t.datetime "created_at",  null: false
