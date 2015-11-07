@@ -34,6 +34,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'geocoder'
 # Bootstrap!!
 gem 'bootstrap-sass'
+gem 'momentjs-rails'
+gem 'bootstrap3-datetimepicker-rails'
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
