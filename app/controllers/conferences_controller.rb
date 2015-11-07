@@ -10,6 +10,10 @@ class ConferencesController < ApplicationController
   # GET /conferences/1
   # GET /conferences/1.json
   def show
+    @hash = Gmaps4rails.build_markers(Conference.all) do |conference, marker|
+      marker.lat conference.latitude
+      marker.lng conference.longitude
+    end
   end
 
   # GET /conferences/new
