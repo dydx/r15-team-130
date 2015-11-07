@@ -5,6 +5,8 @@ class CreateConferences < ActiveRecord::Migration
       t.date :date
       t.time :time
       t.text :description
+      t.float :longitude
+      t.float :latitude
 
       t.timestamps null: false
     end

@@ -3,11 +3,15 @@
 one:
   name: MyString
   date: 2015-11-06
-  time: 2015-11-06 21:12:02
+  time: 2015-11-06 22:26:10
   description: MyText
+  longitude: 1.5
+  latitude: 1.5
 
 two:
   name: MyString
   date: 2015-11-06
-  time: 2015-11-06 21:12:02
+  time: 2015-11-06 22:26:10
   description: MyText
+  longitude: 1.5
+  latitude: 1.5
