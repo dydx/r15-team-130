@@ -34,7 +34,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'geocoder'
 # Bootstrap!!
 gem 'bootstrap-sass'
-<<<<<<< HEAD
 #Google Maps For Rails!!!
 gem 'gmaps4rails'
 gem 'underscore'
