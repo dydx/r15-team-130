@@ -90,14 +90,55 @@
 </div>
 
 <script type='text/javascript'>
-  locations_json = <%=raw @locations.to_json %>
-  restaurants_json = <%=raw @restaurants.to_json %>
-  transportation_json = <%=raw @transportation.to_json %>
-  funstuff_json = <%=raw @funstuff.to_json %>
-  hotels_json = <%=raw @hotels.to_json %>
+  $(document).ready(function(){
+    $("#collapseListGroup1").on('shown.bs.collapse', function(){
+      turnOnMarkers(hotels_markers)
+    }).on('hidden.bs.collapse', function(){
+      turnOffMarkers(hotels_markers)
+    });
+    $("#collapseListGroup2").on('shown.bs.collapse', function(){
+      turnOnMarkers(restaurants_markers)
+    }).on('hidden.bs.collapse', function(){
+      turnOffMarkers(restaurants_markers)
+    });
+    $("#collapseListGroup3").on('shown.bs.collapse', function(){
+      turnOnMarkers(transportation_markers)
+    }).on('hidden.bs.collapse', function(){
+      turnOffMarkers(transportation_markers)
+    });
+    $("#collapseListGroup4").on('shown.bs.collapse', function(){
+      turnOnMarkers(funstuff_markers)
+    }).on('hidden.bs.collapse', function(){
+      turnOffMarkers(funstuff_markers)
+    });
+  });
+
+  function turnOffMarkers(markers_local) {
+    for(i=0; i < markers_local.length; i++) {
+      markers_local[i].setMap(null);
+    }
+  }
+
+
+  function turnOnMarkers(markers_local) {
+    for(i=0; i < markers_local.length; i++) {
+      markers_local[i].setMap(handler);
+    }
+  }
+
+  locations_json = <%=raw @locations.to_json %>;
+  restaurants_json = <%=raw @restaurants.to_json %>;
+  transportation_json = <%=raw @transportation.to_json %>;
+  hotels_json = <%=raw @hotels.to_json %>;
+  funstuff_json=<%=raw @funstuff.to_json %>;
+
   handler = Gmaps.build('Google');
   handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-    markers = handler.addMarkers(hotels_json);
+    markers = handler.addMarkers(locations_json);
+    hotels_markers = handler.addMarkers(hotels_json);
+    restaurants_markers = handler.addMarkers(restaurants_json);
+    transportation_markers = handler.addMarkers(transportation_json);
+    funstuff_markers = handler.addMarkers(funstuff_json);
     handler.bounds.extendWith(markers);
     handler.fitMapToBounds();
     handler.getMap().setZoom(12);
