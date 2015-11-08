@@ -77,7 +77,7 @@
 </div>
 
 <hr>
-
+<div id="DirectionStuff"></div>
 <div class="row well description">
   <div class="col-md-6">
     <p><strong>Description</strong></p>
@@ -96,24 +96,28 @@
     }).on('hidden.bs.collapse', function(){
       turnOffMarkers(hotels_markers);
       directionsDisplay.setMap(null);
+      directionsDisplay.setPanel(null);
     });
     $("#collapseListGroup2").on('shown.bs.collapse', function(){
       turnOnMarkers(restaurants_markers);
     }).on('hidden.bs.collapse', function(){
       turnOffMarkers(restaurants_markers);
       directionsDisplay.setMap(null);
+      directionsDisplay.setPanel(null);
     });
     $("#collapseListGroup3").on('shown.bs.collapse', function(){
       turnOnMarkers(transportation_markers);
     }).on('hidden.bs.collapse', function(){
       turnOffMarkers(transportation_markers);
       directionsDisplay.setMap(null);
+      directionsDisplay.setPanel(null);
     });
     $("#collapseListGroup4").on('shown.bs.collapse', function(){
       turnOnMarkers(funstuff_markers);
     }).on('hidden.bs.collapse', function(){
       turnOffMarkers(funstuff_markers);
       directionsDisplay.setMap(null);
+      directionsDisplay.setPanel(null);
     });
 
     $('.hotels').append(" " + hotels_json.length);
@@ -163,6 +167,7 @@
     directionsService.route(request, function(response, status) {
       if(status == google.maps.DirectionsStatus.OK){
         directionsDisplay.setMap(handler.getMap());
+        directionsDisplay.setPanel(document.getElementById("DirectionStuff"));
         directionsDisplay.setDirections(response);
       } else {
         window.alert('Directions failed due to ' + status + "," +origin +","+ destination);
@@ -182,8 +187,8 @@
     handler.fitMapToBounds();
     handler.getMap().setZoom(12);
 
-    directionsDisplay.setMap(handler.getMap());
     directionsDisplay.setOptions({suppressMarkers: true});
+
     _.each(locations_json, function(json, index){
       json.marker = markers[index];
     });
