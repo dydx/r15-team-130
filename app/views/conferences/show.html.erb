@@ -128,7 +128,6 @@
     for(i=0; i < markers_local.length; i++) {
       markers_local[i].setMap(null);
     }
-    handler.getMap.setZoom(14);
   }
 
 
@@ -136,7 +135,6 @@
     for(i=0; i < markers_local.length; i++) {
       markers_local[i].setMap(handler.getMap());
     }
-    handler.getMap().setZoom(15);
   }
 
   locations_json = <%=raw @locations.to_json %>;
