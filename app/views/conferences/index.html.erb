@@ -31,6 +31,10 @@
   </tbody>
 </table>
 
+<% if signed_in? %>
+
 <br>
 
 <%= link_to 'New Conference', new_conference_path %>
+
+<% end %>
