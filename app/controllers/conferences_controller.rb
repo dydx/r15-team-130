@@ -16,8 +16,10 @@ class ConferencesController < ApplicationController
       marker.title conference.name
     end
     @client = ::GooglePlaces::Client.new("AIzaSyA0-ah-qzAdf7c6IvSSQNlfY4LTNUuZq1U")
-    @restaurants = @client.spots(@conference.latitude, @conference.longitude, :types => 'restaurant')
-
+    @restaurants = @client.spots(@conference.latitude, @conference.longitude, :types => ['restaurant', 'food'])
+    @hotels = @client.spots(@conference.latitude, @conference.longitude, :types => 'hotel')
+    @transportation = @client.spots(@conference.latitude, @conference.longitude, :types => ['subway_station', 'bus_station', 'car_rental', 'train_station', 'taxi_stand', 'travel_agency'])
+    @funstuff = @client.spots(@conference.latitude, @conference.longitude, :types => ['amusement_park', 'book_store', 'bar', 'museum', 'casino', 'dentist'])
   end
 
   # GET /conferences/new
