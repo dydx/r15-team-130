@@ -147,7 +147,7 @@
 
   handler = Gmaps.build('Google');
   handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-    markers = handler.addMarkers(locations_json);
+    markers = handler.addMarkers(locations_json, { "picture": {"url": "images/beachflag.png"}, "opacity": 0.7});
     hotels_markers = handler.addMarkers(hotels_json);
     restaurants_markers = handler.addMarkers(restaurants_json);
     transportation_markers = handler.addMarkers(transportation_json);
