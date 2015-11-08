@@ -11,10 +11,10 @@
 <div class="row">
   <div class="col-md-2">
     <div class="panel panel-default">
-      <div class="panel-heading">Nearby Stuff</div>
+      <div class="panel-heading" id='location'>Nearby Stuff</div>
       <ul class="list-group">
         <li class="list-group-item"><span class="badge">15</span>Hotels</li>
-        <li class="list-group-item"><span class="badge">35</span>Food</li>
+        <li class="list-group-item" id="restaurants"><span class="badge">35</span>Food</li>
         <li class="list-group-item"><span class="badge">5</span>Transport</li>
         <li class="list-group-item"><span class="badge">99</span>Fun Stuff</li>
       </ul>
@@ -41,27 +41,26 @@
   <div class="col-md-6">
     <p><strong>Date</strong>: <%= @conference.dateandtime.strftime('%d %b %Y') %></p>
     <p><strong>Location</strong>: <%= @conference.address %></p>
-<<<<<<< HEAD
-=======
-
->>>>>>> b3017c7a161d7c98f304153b4698eb22ad89fafb
   </div>
 </div>
 
-<div id="markers_list"></div>
-
 <script type='text/javascript'>
   locations_json = <%=raw @locations.to_json %>
+  restaurants_json = <%=raw @restaurants.to_json %>
   handler = Gmaps.build('Google');
   handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
     markers = handler.addMarkers(locations_json);
     handler.bounds.extendWith(markers);
     handler.fitMapToBounds();
     handler.getMap().setZoom(12);
-    createSidebar(locations_json);
+    createSidebar(locations_json, '#location');
+    createSidebar(restaurants_json, '#restaurants');
   });
   function createSidebarLi(json){
-    return ("<li><a>" + json.name + "</a></li>");
+    if(json.marker_title)
+      return ("<li><a>" + json.marker_title + "</a></li>");
+    else
+      return ("<li><a>" + json.name + "</a></li>");
   };
   function bindLiToMarker($li, marker){
     $li.on('click', function(){
@@ -72,10 +71,10 @@
     })
   };
 
-  function createSidebar(json_array){
-    _.each(locations_json, function(json){
+  function createSidebar(json_array, id){
+    _.each(json_array, function(json){
       var $li = $( createSidebarLi(json) );
-      $li.appendTo('#markers_list');
+      $li.appendTo(id);
       bindLiToMarker($li, json.marker);
     });
   };

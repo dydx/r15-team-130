@@ -16,7 +16,7 @@ class ConferencesController < ApplicationController
       marker.title conference.name
     end
     @client = ::GooglePlaces::Client.new("AIzaSyA0-ah-qzAdf7c6IvSSQNlfY4LTNUuZq1U")
-    @locations += @client.spots(@conference.latitude, @conference.longitude, :types => 'restaurant')
+    @restaurants = @client.spots(@conference.latitude, @conference.longitude, :types => 'restaurant')
 
   end
 
