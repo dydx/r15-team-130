@@ -118,6 +118,12 @@
     $('.funstuff').append(" " + funstuff_json.length);
   });
 
+  window.onload = function() {
+    turnOffMarkers(hotels_markers);      
+    turnOffMarkers(restaurants_markers);
+    turnOffMarkers(transportation_markers);
+    turnOnMarkers(funstuff_markers);
+  };
   function turnOffMarkers(markers_local) {
     for(i=0; i < markers_local.length; i++) {
       markers_local[i].setMap(null);
