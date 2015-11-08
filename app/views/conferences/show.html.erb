@@ -164,7 +164,7 @@
   };
   function bindLiToMarker($li, marker){
     $li.on('click', function(){
-      handler.getMap().setZoom(14);
+      handler.getMap().setZoom(17);
       marker.setMap(handler.getMap());
       marker.panTo();
       google.maps.event.trigger(marker.getServiceObject(), 'click');
