@@ -10,8 +10,8 @@
     <p><%= @conference.description %></p>
   </div>
   <div class="col-md-6">
-    <p><%= @conference.dateandtime.strftime('%d %b %Y') %></p>
-    <p><%= @conference.address %></p>
+    <p><strong>Date</strong>: <%= @conference.dateandtime.strftime('%d %b %Y') %></p>
+    <p><strong>Location</strong>:<%= @conference.address %></p>
   </div>
 </div>
 
