@@ -40,6 +40,8 @@ gem 'underscore'
 gem 'momentjs-rails'
 gem 'bootstrap3-datetimepicker-rails'
 
+gem 'google_places'
+
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'

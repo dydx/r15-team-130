@@ -21,15 +21,10 @@
   <div class="col-md-6">
     <p><strong>Date</strong>: <%= @conference.dateandtime.strftime('%d %b %Y') %></p>
     <p><strong>Location</strong>: <%= @conference.address %></p>
-  
-    <hr>
-
-    <p>
-      <strong>Local Destinations</strong>
-      <ul id="markers_list"></ul>
-    </p>
   </div>
 </div>
+
+<div id="markers_list"></div>
 
 <script type='text/javascript'>
   locations_json = <%=raw @locations.to_json %>
@@ -42,7 +37,7 @@
     createSidebar(locations_json);
   });
   function createSidebarLi(json){
-    return ("<li><a>" + json.marker_title + "</a></li>");
+    return ("<li><a>" + json.name + "</a></li>");
   };
   function bindLiToMarker($li, marker){
     $li.on('click', function(){
@@ -54,7 +49,7 @@
   };
 
   function createSidebar(json_array){
-    _.each(json_array, function(json){
+    _.each(locations_json, function(json){
       var $li = $( createSidebarLi(json) );
       $li.appendTo('#markers_list');
       bindLiToMarker($li, json.marker);
