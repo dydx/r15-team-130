@@ -9,18 +9,63 @@
 <hr>
 
 <div class="row">
-  <div class="col-md-2">
-    <div class="panel panel-default">
-      <div class="panel-heading" id="location">Nearby Stuff</div>
-      <ul class="list-group">
-        <li class="list-group-item" id="hotels"><span class="badge">15</span>Hotels</li>
-        <li class="list-group-item" id="restaurants"><span class="badge">35</span>Food</li>
-        <li class="list-group-item" id="transportation"><span class="badge">5</span>Transport</li>
-        <li class="list-group-item" id="funstuff"><span class="badge">99</span>Fun Stuff</li>
-      </ul>
+  <div class="col-md-4">
+
+    <div class="panel-group" role="tablist">
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="collapseListGroupHeading1">
+          <h4 class="panel-title">
+            <a class="" role="button" data-toggle="collapse" href="#collapseListGroup1" aria-expanded="true" aria-controls="collapseListGroup1">Hotels</a>
+          </h4>
+        </div>
+        <div id="collapseListGroup1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="collapseListGroupHeading1" aria-expanded="true">
+          <ul class="list-group" id="hotels"></ul>
+        </div>
+      </div>
     </div>
+
+
+    <div class="panel-group" role="tablist">
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="collapseListGroupHeading2">
+          <h4 class="panel-title">
+            <a class="" role="button" data-toggle="collapse" href="#collapseListGroup2" aria-expanded="true" aria-controls="collapseListGroup2">Restaurants</a>
+          </h4>
+        </div>
+        <div id="collapseListGroup2" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="collapseListGroupHeading2" aria-expanded="true">
+          <ul class="list-group" id="restaurants"></ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-group" role="tablist">
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="collapseListGroupHeading3">
+          <h4 class="panel-title">
+            <a class="" role="button" data-toggle="collapse" href="#collapseListGroup3" aria-expanded="true" aria-controls="collapseListGroup3">Transportation</a>
+          </h4>
+        </div>
+        <div id="collapseListGroup3" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="collapseListGroupHeading3" aria-expanded="true">
+          <ul class="list-group" id="transportation"></ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-group" role="tablist">
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="collapseListGroupHeading4">
+          <h4 class="panel-title">
+            <a class="" role="button" data-toggle="collapse" href="#collapseListGroup4" aria-expanded="true" aria-controls="collapseListGroup4">Fun Stuff</a>
+          </h4>
+        </div>
+        <div id="collapseListGroup4" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="collapseListGroupHeading4" aria-expanded="true">
+          <ul class="list-group" id="funstuff"></ul>
+        </div>
+      </div>
+    </div>
+ 
   </div>
-  <div class="col-md-10"> 
+  <div class="col-md-8"> 
     <div class="panel panel-default">
       <div class="panel-body"> 
         <div style='width: 100%;'>
