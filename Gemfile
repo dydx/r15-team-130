@@ -37,7 +37,7 @@ gem 'bootstrap-sass'
 #Google Maps For Rails!!!
 gem 'gmaps4rails'
 gem 'underscore'
-gem 'moment'
+gem 'momentjs-rails'
 
 gem 'google_places'
 
