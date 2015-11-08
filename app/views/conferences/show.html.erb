@@ -92,24 +92,24 @@
 <script type='text/javascript'>
   $(document).ready(function(){
     $("#collapseListGroup1").on('shown.bs.collapse', function(){
-      turnOnMarkers(hotels_markers)
+      turnOnMarkers(hotels_markers);
     }).on('hidden.bs.collapse', function(){
-      turnOffMarkers(hotels_markers)
+      turnOffMarkers(hotels_markers);
     });
     $("#collapseListGroup2").on('shown.bs.collapse', function(){
-      turnOnMarkers(restaurants_markers)
+      turnOnMarkers(restaurants_markers);
     }).on('hidden.bs.collapse', function(){
-      turnOffMarkers(restaurants_markers)
+      turnOffMarkers(restaurants_markers);
     });
     $("#collapseListGroup3").on('shown.bs.collapse', function(){
-      turnOnMarkers(transportation_markers)
+      turnOnMarkers(transportation_markers);
     }).on('hidden.bs.collapse', function(){
-      turnOffMarkers(transportation_markers)
+      turnOffMarkers(transportation_markers);
     });
     $("#collapseListGroup4").on('shown.bs.collapse', function(){
-      turnOnMarkers(funstuff_markers)
+      turnOnMarkers(funstuff_markers);
     }).on('hidden.bs.collapse', function(){
-      turnOffMarkers(funstuff_markers)
+      turnOffMarkers(funstuff_markers);
     });
   });
 
@@ -122,7 +122,7 @@
 
   function turnOnMarkers(markers_local) {
     for(i=0; i < markers_local.length; i++) {
-      markers_local[i].setMap(handler);
+      markers_local[i].setMap(handler.getMap());
     }
   }
 
@@ -146,7 +146,8 @@
     createSidebar(transportation_json, '#transportation');
     createSidebar(hotels_json, '#hotels');
     createSidebar(funstuff_json, '#funstuff');
-    });
+  });
+  
   function createSidebarLi(json){
       return ("<li class='list-group-item'><a>" + json.name + "</a></li>");
   };
