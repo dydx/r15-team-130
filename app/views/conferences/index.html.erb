@@ -16,7 +16,7 @@
     <tr>
       <th>Name</th>
       <th>Location</th>
-      <th>Date and Time</th>
+      <th>Date</th>
     </tr>
   </thead>
 
@@ -25,7 +25,7 @@
       <tr>
         <td><%= link_to conference.name, conference, 'data-no-turbolink' => true %></td>
         <td><%= conference.address %></td>
-        <td><%= conference.dateandtime %></td>
+        <td><%= conference.dateandtime.strftime('%b %d %Y') %></td>
       </tr>
     <% end %>
   </tbody>
