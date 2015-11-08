@@ -84,7 +84,7 @@
     <p><%= @conference.description %></p>
   </div>
   <div class="col-md-6">
-    <p><strong>Date</strong>: <%= @conference.dateandtime.strftime('%d %b %Y') %> @ <%= @conference.dateandtime.strftime('%I:%M') %></p>
+    <p><strong>Date</strong>: <%= @conference.dateandtime.strftime('%d %b %Y') %></p>
     <p><strong>Location</strong>: <%= @conference.address %></p>
   </div>
 </div>
@@ -183,7 +183,7 @@
     handler.getMap().setZoom(12);
 
     directionsDisplay.setMap(handler.getMap());
-
+    directionsDisplay.setOptions({suppressMarkers: true});
     _.each(locations_json, function(json, index){
       json.marker = markers[index];
     });
@@ -229,8 +229,6 @@
   };
 </script>
 
-<% if signed_in? %>
 <%= link_to 'Edit', edit_conference_path(@conference) %> |
-<%= link_to 'Delete', conference_path(@conference), method: :delete, data: { confirm: 'Are you sure?' } %>
-<% end %>
+<%= link_to 'Delete', conference_path(@conference), method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', conferences_path %>
