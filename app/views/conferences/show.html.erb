@@ -145,9 +145,29 @@
   hotels_json = <%=raw @hotels.to_json %>;
   funstuff_json=<%=raw @funstuff.to_json %>;
 
+  directionsDisplay = new google.maps.DirectionsRenderer();
+  directionsService = new google.maps.DirectionsService();
+
+  function calcRoute(selected_marker) {
+    var origin = markers[0].getPosition();
+    var destination = selected_marker.getPosition();
+    var request = {
+      origin:       origin,
+      destination:  destination,
+      travelMode:   google.maps.TravelMode.DRIVING
+    };
+    directionService.route(request, function(response, status) {
+      if(status == google.maps.DirectionStatus.OK){
+        directionsDisplay.setDirections(response);
+      } else {
+        window.alert('Directions failed due to ' + status);
+      }
+    });
+  }
+
   handler = Gmaps.build('Google');
   handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-    markers = handler.addMarkers(locations_json, { "picture": {"url": "images/beachflag.png"}, "opacity": 0.7});
+    markers = handler.addMarkers(locations_json, { "opacity": 0.7 });
     hotels_markers = handler.addMarkers(hotels_json);
     restaurants_markers = handler.addMarkers(restaurants_json);
     transportation_markers = handler.addMarkers(transportation_json);
@@ -155,6 +175,8 @@
     handler.bounds.extendWith(markers);
     handler.fitMapToBounds();
     handler.getMap().setZoom(12);
+
+    directionsDisplay.setMap(handler.getMap());
 
     _.each(locations_json, function(json, index){
       json.marker = markers[index];
@@ -175,6 +197,8 @@
     createSidebar(transportation_json, '#transportation');
     createSidebar(hotels_json, '#hotels');
     createSidebar(funstuff_json, '#funstuff');
+
+    calcRoute(hotels_markers[0]);
   });
   
   function createSidebarLi(json){
