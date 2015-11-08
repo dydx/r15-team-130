@@ -15,11 +15,11 @@ class ConferencesController < ApplicationController
       marker.lng conference.longitude
       marker.title conference.name
     end
-    @client = ::GooglePlaces::Client.new("AIzaSyB-9YVR2qPw1YLchFKR6wQz1EZCif7WCYw")
-    @restaurants = @client.spots(@conference.latitude, @conference.longitude, :types => ['restaurant', 'food'])
-    @hotels = @client.spots(@conference.latitude, @conference.longitude, :types => ['lodging', 'rv_park', 'park'])
-    @transportation = @client.spots(@conference.latitude, @conference.longitude, :types => ['subway_station', 'bus_station', 'car_rental', 'train_station', 'taxi_stand', 'travel_agency'])
-    @funstuff = @client.spots(@conference.latitude, @conference.longitude, :types => ['amusement_park', 'library', 'liquor_store', 'book_store', 'bar', 'museum', 'casino', 'night_club', 'dentist'])
+    @client ||= ::GooglePlaces::Client.new("AIzaSyB-9YVR2qPw1YLchFKR6wQz1EZCif7WCYw")
+    @restaurants ||= @client.spots(@conference.latitude, @conference.longitude, :types => ['restaurant', 'food'])
+    @hotels ||= @client.spots(@conference.latitude, @conference.longitude, :types => ['lodging', 'rv_park', 'park'])
+    @transportation ||= @client.spots(@conference.latitude, @conference.longitude, :types => ['subway_station', 'bus_station', 'car_rental', 'train_station', 'taxi_stand', 'travel_agency'])
+    @funstuff ||= @client.spots(@conference.latitude, @conference.longitude, :types => ['amusement_park', 'library', 'liquor_store', 'book_store', 'bar', 'museum', 'casino', 'night_club', 'dentist'])
   end
 
   # GET /conferences/new
