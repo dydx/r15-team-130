@@ -3,40 +3,25 @@
 
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @conference.name %>
-</p>
 
-<p>
-  <strong>Date and Time:</strong>
-  <%= @conference.dateandtime %>
-</p>
+<div class="row">
+  <div class="col-md-6">
+    <h2><%= @conference.name %></h2>
+    <p><%= @conference.description %></p>
+  </div>
+  <div class="col-md-6">
+    <p><strong>Date</strong>: <%= @conference.dateandtime.strftime('%d %b %Y') %></p>
+    <p><strong>Location</strong>: <%= @conference.address %></p>
+  </div>
+</div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @conference.description %>
-</p>
 
-<p>
-  <strong>Address:</strong>
-  <%= @conference.address %>
-</p>
 
-<p>
-  <strong>Longitude:</strong>
-  <%= @conference.longitude %>
-</p>
-
-<p>
-  <strong>Latitude:</strong>
-  <%= @conference.latitude %>
-</p>
-
-<div style='width: 800px;'>
-  <div id="map" style='width: 800px; height: 400px;'></div>
+<div style='width: 100%;'>
+  <div id="map" style='width: 100%; height: 400px;'></div>
   <div id='markers_list'></div>
 </div>
+
 <script type='text/javascript'>
   var locations_json = <%=raw @locations.to_json %>
   handler = Gmaps.build('Google');
