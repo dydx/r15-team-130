@@ -35,15 +35,41 @@
 
 <div style='width: 800px;'>
   <div id="map" style='width: 800px; height: 400px;'></div>
+  <div id='markers_list'></div>
 </div>
 <script type='text/javascript'>
+  var locations_json = <%=raw @locations.to_json %>
   handler = Gmaps.build('Google');
   handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-    markers = handler.addMarkers(<%=raw @hash.to_json %>);
+    markers = handler.addMarkers(locations_json);
     handler.bounds.extendWith(markers);
     handler.fitMapToBounds();
     handler.getMap().setZoom(12);
+    _.each(locations_json, function(json, index){
+        json.marker = markers[index];
+      });
+
+    createSidebar(locations_json);
   });
+  function createSidebarLi(json){
+    return ("<li><a>" + json.title + "</a></li>");
+  };
+  function bindLiToMarker($li, marker){
+    $li.on('click', function(){
+      handler.getMap().setZoom(14);
+      marker.setMap(handler.getMap());
+      marker.panTo();
+      google.maps.event.trigger(marker.getServiceObject(), 'click');
+    })
+  };
+
+  function createSidebar(json_array){
+    _.each(locations_json, function(json){
+      var $li = $( createSidebarLi(json) );
+      $li.appendTo('#markers_list');
+      bindLiToMarker($li, json.marker);
+    });
+  };
 </script>
 
 <%= link_to 'Edit', edit_conference_path(@conference) %> |
