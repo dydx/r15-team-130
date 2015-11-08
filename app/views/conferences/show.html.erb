@@ -180,16 +180,13 @@
   };
   function bindLiToMarker($li, marker){
     $li.on('click', function(){
-      handler.getMap().setZoom(14);
+      handler.getMap().setZoom(17);
       marker.setMap(handler.getMap());
       marker.panTo();
       google.maps.event.trigger(marker.getServiceObject(), 'click');
     })
   };
 
-  function createBadge(json) {
-    return "<span class='badge'>" + json.length + "</span>";
-  };
   function createSidebar(json_array, id){
     _.each(json_array, function(json){
       var $li = $( createSidebarLi(json) );
