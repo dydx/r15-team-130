@@ -21,13 +21,15 @@
   <div class="col-md-6">
     <p><strong>Date</strong>: <%= @conference.dateandtime.strftime('%d %b %Y') %></p>
     <p><strong>Location</strong>: <%= @conference.address %></p>
+  
+    <hr>
+
+    <p>
+      <strong>Local Destinations</strong>
+      <ul id="markers_list"></ul>
+    </p>
   </div>
-
-  <ul id="markers_list"></ul>
-
 </div>
-
-<div id="markers_list"></div>
 
 <script type='text/javascript'>
   locations_json = <%=raw @locations.to_json %>
