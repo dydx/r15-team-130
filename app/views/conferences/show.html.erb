@@ -122,7 +122,7 @@
     turnOffMarkers(hotels_markers);      
     turnOffMarkers(restaurants_markers);
     turnOffMarkers(transportation_markers);
-    turnOnMarkers(funstuff_markers);
+    turnOffMarkers(funstuff_markers);
   };
   function turnOffMarkers(markers_local) {
     for(i=0; i < markers_local.length; i++) {
@@ -153,6 +153,22 @@
     handler.bounds.extendWith(markers);
     handler.fitMapToBounds();
     handler.getMap().setZoom(12);
+
+    _.each(locations_json, function(json, index){
+      json.marker = markers[index];
+    });
+    _.each(hotels_json, function(json, index){
+      json.marker = hotels_markers[index];
+    });
+    _.each(restaurants_json, function(json, index){
+      json.marker = restaurants_markers[index];
+    });
+    _.each(transportation_json, function(json, index){
+      json.marker = transportation_markers[index];
+    });
+    _.each(funstuff_json, function(json, index){
+      json.marker = funstuff_markers[index];
+    });
     createSidebar(restaurants_json, '#restaurants');
     createSidebar(transportation_json, '#transportation');
     createSidebar(hotels_json, '#hotels');
