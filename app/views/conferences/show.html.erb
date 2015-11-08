@@ -56,17 +56,14 @@
     handler.bounds.extendWith(markers);
     handler.fitMapToBounds();
     handler.getMap().setZoom(12);
-    createSidebar(locations_json, '#location');
     createSidebar(restaurants_json, '#restaurants');
     createSidebar(transportation_json, '#transportation');
     createSidebar(hotels_json, '#hotels');
     createSidebar(funstuff_json, '#funstuff');
   });
-  function createSidebarLi(json){
-    if(json.marker_title)
-      return ("<li><a>" + json.marker_title + "</a></li>");
-    else
-      return ("<li><a>" + json.name + "</a></li>");
+function createSidebarLi(json){
+
+      return ("<li class='list-group-item'><a>" + json.name + "</a></li>");
   };
   function bindLiToMarker($li, marker){
     $li.on('click', function(){
