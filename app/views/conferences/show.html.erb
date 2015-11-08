@@ -52,7 +52,7 @@
   hotels_json = <%=raw @hotels.to_json %>
   handler = Gmaps.build('Google');
   handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-    markers = handler.addMarkers(locations_json);
+    markers = handler.addMarkers(restaurants_json, :clickable true);
     handler.bounds.extendWith(markers);
     handler.fitMapToBounds();
     handler.getMap().setZoom(12);
