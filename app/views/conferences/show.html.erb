@@ -25,12 +25,14 @@
 </div>
 
 <script type='text/javascript'>
+  locations_json = <%=raw @locations.to_json %>
   handler = Gmaps.build('Google');
   handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-    markers = handler.addMarkers(<%=raw @locations.to_json %>);
+    markers = handler.addMarkers(locations_json);
     handler.bounds.extendWith(markers);
     handler.fitMapToBounds();
     handler.getMap().setZoom(12);
+    createSidebar(locations_json);
   });
   function createSidebarLi(json){
     return ("<li><a>" + json.marker_title + "</a></li>");
