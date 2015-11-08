@@ -37,7 +37,7 @@
     createSidebar(locations_json);
   });
   function createSidebarLi(json){
-    return ("<li><a>" + json.title + "</a></li>");
+    return ("<li><a>" + json.marker_title + "</a></li>");
   };
   function bindLiToMarker($li, marker){
     $li.on('click', function(){

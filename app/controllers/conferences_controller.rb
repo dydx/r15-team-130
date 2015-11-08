@@ -13,7 +13,7 @@ class ConferencesController < ApplicationController
     @locations = Gmaps4rails.build_markers(@conference) do |conference, marker|
       marker.lat conference.latitude
       marker.lng conference.longitude
-      marker.title "Big ass titties"
+      marker.title conference.name
     end
   end
 
