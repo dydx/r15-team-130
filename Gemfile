@@ -37,8 +37,6 @@ gem 'bootstrap-sass'
 #Google Maps For Rails!!!
 gem 'gmaps4rails'
 gem 'underscore'
-gem 'momentjs-rails'
-gem 'bootstrap3-datetimepicker-rails'
 
 gem 'google_places'
 
