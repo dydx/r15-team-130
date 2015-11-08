@@ -95,21 +95,25 @@
       turnOnMarkers(hotels_markers);
     }).on('hidden.bs.collapse', function(){
       turnOffMarkers(hotels_markers);
+      directionsDisplay.setMap(null);
     });
     $("#collapseListGroup2").on('shown.bs.collapse', function(){
       turnOnMarkers(restaurants_markers);
     }).on('hidden.bs.collapse', function(){
       turnOffMarkers(restaurants_markers);
+      directionsDisplay.setMap(null);
     });
     $("#collapseListGroup3").on('shown.bs.collapse', function(){
       turnOnMarkers(transportation_markers);
     }).on('hidden.bs.collapse', function(){
       turnOffMarkers(transportation_markers);
+      directionsDisplay.setMap(null);
     });
     $("#collapseListGroup4").on('shown.bs.collapse', function(){
       turnOnMarkers(funstuff_markers);
     }).on('hidden.bs.collapse', function(){
       turnOffMarkers(funstuff_markers);
+      directionsDisplay.setMap(null);
     });
 
     $('.hotels').append(" " + hotels_json.length);
@@ -118,12 +122,15 @@
     $('.funstuff').append(" " + funstuff_json.length);
   });
 
-  window.onload = function() {
+  window.onload = function() {turnOffAllMarkersButOrigin();};
+
+  function turnOffAllMarkersButOrigin() {
     turnOffMarkers(hotels_markers);      
     turnOffMarkers(restaurants_markers);
     turnOffMarkers(transportation_markers);
     turnOffMarkers(funstuff_markers);
   };
+
   function turnOffMarkers(markers_local) {
     for(i=0; i < markers_local.length; i++) {
       markers_local[i].setMap(null);
@@ -145,29 +152,28 @@
   hotels_json = <%=raw @hotels.to_json %>;
   funstuff_json=<%=raw @funstuff.to_json %>;
 
-  directionsDisplay = new google.maps.DirectionsRenderer();
-  directionsService = new google.maps.DirectionsService();
-
   function calcRoute(selected_marker) {
-    var origin = markers[0].getPosition();
-    var destination = selected_marker.getPosition();
+    var origin = new google.maps.LatLng(locations_json[0].lat, locations_json[0].lng);
+    var destination = selected_marker;
     var request = {
       origin:       origin,
       destination:  destination,
       travelMode:   google.maps.TravelMode.DRIVING
     };
-    directionService.route(request, function(response, status) {
-      if(status == google.maps.DirectionStatus.OK){
+    directionsService.route(request, function(response, status) {
+      if(status == google.maps.DirectionsStatus.OK){
+        directionsDisplay.setMap(handler.getMap());
         directionsDisplay.setDirections(response);
       } else {
-        window.alert('Directions failed due to ' + status);
+        window.alert('Directions failed due to ' + status + "," +origin +","+ destination);
       }
     });
   }
-
+  directionsDisplay = new google.maps.DirectionsRenderer;
+  directionsService = new google.maps.DirectionsService;
   handler = Gmaps.build('Google');
   handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-    markers = handler.addMarkers(locations_json, { "opacity": 0.7 });
+    markers = handler.addMarkers (locations_json, { "opacity": 0.7 });
     hotels_markers = handler.addMarkers(hotels_json);
     restaurants_markers = handler.addMarkers(restaurants_json);
     transportation_markers = handler.addMarkers(transportation_json);
@@ -198,7 +204,6 @@
     createSidebar(hotels_json, '#hotels');
     createSidebar(funstuff_json, '#funstuff');
 
-    calcRoute(hotels_markers[0]);
   });
   
   function createSidebarLi(json){
@@ -207,8 +212,10 @@
   function bindLiToMarker($li, marker){
     $li.on('click', function(){
       handler.getMap().setZoom(17);
+      turnOffAllMarkersButOrigin();
       marker.setMap(handler.getMap());
       marker.panTo();
+      calcRoute(handler.getMap().getCenter());
       google.maps.event.trigger(marker.getServiceObject(), 'click');
     })
   };
